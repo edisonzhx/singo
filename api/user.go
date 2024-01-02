@@ -10,9 +10,9 @@ import (
 
 // UserRegister 用户注册接口
 func UserRegister(c *gin.Context) {
-	var service service.UserRegisterService
-	if err := c.ShouldBind(&service); err == nil {
-		res := service.Register()
+	var services service.UserRegisterService
+	if err := c.ShouldBind(&services); err == nil {
+		res := services.Register()
 		c.JSON(200, res)
 	} else {
 		c.JSON(200, ErrorResponse(err))
@@ -21,9 +21,9 @@ func UserRegister(c *gin.Context) {
 
 // UserLogin 用户登录接口
 func UserLogin(c *gin.Context) {
-	var service service.UserLoginService
-	if err := c.ShouldBind(&service); err == nil {
-		res := service.Login(c)
+	var services service.UserLoginService
+	if err := c.ShouldBind(&services); err == nil {
+		res := services.Login(c)
 		c.JSON(200, res)
 	} else {
 		c.JSON(200, ErrorResponse(err))
